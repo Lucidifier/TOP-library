@@ -5,15 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Library</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="scripts.js" defer></script>
 </head>
 <body>
   <div class="container">
     <header>YOUR LIBRARY</header>
-    <main></main>
+    <main>
+      
+    </main>
+    <dialog class="entry-dialog">
+      <section>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+      </section>
+      <section>
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author">
+      </section>
+      <section>
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id="genre">
+      </section>
+      <section>
+        <label for="read">READ</label>
+        <input type="checkbox" name="read" id="read">
+      </section>
+      <button class="close-dialog">CLOSE DIALOG</button>
+    </dialog>
     <footer>
-      <button>PLUS</button>
+      <button class="open-dialog">PLUS</button>
+      
     </footer>
   </div>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
