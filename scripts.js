@@ -1,6 +1,13 @@
   const library = [];
 
   function displayBook() {
+
+    //Clear container of  previous book divs
+    while(bookContainer.firstChild) {
+      bookContainer.removeChild(bookContainer.firstChild);
+    }
+
+    //Loop through library arr  and create  divs for every object
     library.forEach(function(item) {
       let containerDiv = document.createElement('div');
       let line1 = document.createElement('p');
@@ -24,7 +31,6 @@
   const addBookBtn = document.querySelector('.add-book');
   const dialog = document.querySelector('.entry-dialog');
   const bookContainer = document.querySelector('.book-container');
-  const testButton = document.querySelector('.test-btn');
 
   //Input fields 
   const bookTitle = document.getElementById('title');
@@ -69,5 +75,3 @@
   });
 
   addBookBtn.addEventListener('click', addBookToLibrary);
-
-  testButton.addEventListener('click', displayBook);
