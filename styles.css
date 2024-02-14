@@ -48,3 +48,9 @@ body {
   display: grid;
   grid-template-rows: repeat(minmax(0,1fr));
 }
+
+.book {
+  height: 10rem;
+  width: 10rem;
+  border: 2px solid black;
+}
