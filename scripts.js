@@ -14,8 +14,11 @@
       let lineAuthor = document.createElement('p');
       let lineGenre = document.createElement('p');
       removeButton = document.createElement('button');
-      containerDiv.dataset.order = index;
-      console.log(containerDiv.dataset.order);
+
+      //Creates dataset data-order and binds it to object div index
+      containerDiv.dataset.order = `${index}`;
+      let orderIndex = containerDiv.dataset.order;
+      console.log(orderIndex);
 
       lineTitle.innerText = item.title;
       lineAuthor.innerText = item.author;
@@ -31,15 +34,30 @@
 
       function removeBookFromLibrary() {
         console.log(library);
-        containerDiv.classList.toggle('hide-element');
-        let indexToRemove = containerDiv.dataset.order;
-        library.splice(indexToRemove, 1);
+        containerDiv.remove();
+        library.splice(containerDiv.dataset.order,1);
+
+        //Selects all  divs and resets  their data-order values  to match index  values, so splicing happens  from  correct index
+        let allContainerDivs = document.querySelectorAll('main > div');
+        let i = 0;
+        allContainerDivs.forEach(function(item) {
+          console.log(item.dataset.order);
+          item.dataset.order = i;
+          i++;
+          console.log(item.dataset.order);
+        });
         console.log(library);
-      }
+
+          // containerDiv.dataset.order = `${index}`;
+          // console.log(index);
+          // console.log(containerDiv.dataset.order);
+          // console.log(library);
+        }
 
       removeButton.addEventListener('click', removeBookFromLibrary);
     });
   }
+  
 
   console.log(library);
  
