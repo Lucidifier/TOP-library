@@ -54,3 +54,13 @@ body {
   width: 10rem;
   border: 2px solid black;
 }
+
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  grid-template-rows: repeat(2, minmax(0,1fr));
+}
+
+.hide-element {
+  display: none;
+}

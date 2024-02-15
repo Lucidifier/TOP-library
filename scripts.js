@@ -5,23 +5,40 @@
     //Clear container of  previous book divs
     while(bookContainer.firstChild) {
       bookContainer.removeChild(bookContainer.firstChild);
-    }
+    };
 
     //Loop through library arr  and create  divs for every object
-    library.forEach(function(item) {
+    library.forEach(function(item, index) {
       let containerDiv = document.createElement('div');
-      let line1 = document.createElement('p');
-      let line2 = document.createElement('p');
-      let line3 = document.createElement('p');
-      line1.innerText = item.title;
-      line2.innerText = item.author;
-      line3.innerText = item.genre;
+      let lineTitle = document.createElement('p');
+      let lineAuthor = document.createElement('p');
+      let lineGenre = document.createElement('p');
+      removeButton = document.createElement('button');
+      containerDiv.dataset.order = index;
+      console.log(containerDiv.dataset.order);
+
+      lineTitle.innerText = item.title;
+      lineAuthor.innerText = item.author;
+      lineGenre.innerText = item.genre;
+      removeButton.innerText = 'REMOVE';
+
       bookContainer.appendChild(containerDiv);
-      containerDiv.appendChild(line1);
-      containerDiv.appendChild(line2);
-      containerDiv.appendChild(line3);
+      containerDiv.appendChild(lineTitle);
+      containerDiv.appendChild(lineAuthor);
+      containerDiv.appendChild(lineGenre);
+      containerDiv.appendChild(removeButton);
       containerDiv.classList.toggle('book');
-    })
+
+      function removeBookFromLibrary() {
+        console.log(library);
+        containerDiv.classList.toggle('hide-element');
+        let indexToRemove = containerDiv.dataset.order;
+        library.splice(indexToRemove, 1);
+        console.log(library);
+      }
+
+      removeButton.addEventListener('click', removeBookFromLibrary);
+    });
   }
 
   console.log(library);
@@ -31,6 +48,7 @@
   const addBookBtn = document.querySelector('.add-book');
   const dialog = document.querySelector('.entry-dialog');
   const bookContainer = document.querySelector('.book-container');
+  let removeButton;
 
   //Input fields 
   const bookTitle = document.getElementById('title');
@@ -64,6 +82,8 @@
     displayBook();
   }
 
+  
+
   openDialogBtn.addEventListener('click', () => {
     console.log('asd');
     dialog.showModal();
@@ -75,3 +95,5 @@
   });
 
   addBookBtn.addEventListener('click', addBookToLibrary);
+
+ 
