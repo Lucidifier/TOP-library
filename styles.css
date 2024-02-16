@@ -119,6 +119,20 @@ section > input:focus {
   padding-left: 1rem;
 }
 
+section > input[type='checkbox']:focus{
+  border: none;
+  outline: none;
+}
+
+dialog > button {
+  background-color: var(--color-primary);
+  border: 0.4rem solid var(--color-four);
+  border-radius: 1rem;
+  font-size: var(--font-medium);
+  color: var(--color-four);
+  font-weight: bolder;
+}
+
 .entry-dialog > section:nth-child(-n+3) {
   display: grid;
   grid-template-rows: repeat(minmax(0,1fr));
