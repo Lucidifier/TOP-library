@@ -1,5 +1,7 @@
   const library = [];
 
+
+
   function displayBook() {
 
     //Clear container of  previous book divs
@@ -17,9 +19,7 @@
 
       //Creates dataset data-order and binds it to object div index
       containerDiv.dataset.order = `${index}`;
-      let orderIndex = containerDiv.dataset.order;
-      console.log(orderIndex);
-
+      // let orderIndex = containerDiv.dataset.order;
       lineTitle.innerText = item.title;
       lineAuthor.innerText = item.author;
       lineGenre.innerText = item.genre;
@@ -36,6 +36,14 @@
       lineAuthor.classList.toggle('book-rows');
       lineGenre.classList.toggle('book-rows');
       removeButton.classList.toggle('book-remove-btn');
+
+
+      
+      // if(item.read === true) {
+      //   containerDiv.classList.toggle('read-outline');
+      //   console.log(1);
+      // };
+
 
       function removeBookFromLibrary() {
         console.log(library);
@@ -59,7 +67,30 @@
           // console.log(library);
         }
 
+
+        function checkReadStatus() {
+          if(item.read === true) {
+            containerDiv.classList.toggle('read-outline');
+            console.log(1);
+          };
+        }
+
+        function changeReadStatus() {
+          if(item.read === true) {
+            containerDiv.classList.toggle('read-outline');
+            console.log(1);
+            return item.read = false;
+          } else {
+            containerDiv.classList.toggle('read-outline');
+            console.log(2);
+            return item.read = true;
+          }
+        };
+
+
+      checkReadStatus(); 
       removeButton.addEventListener('click', removeBookFromLibrary);
+      containerDiv.addEventListener('click', changeReadStatus);
     });
   }
   
@@ -84,7 +115,18 @@
     this.title = bookTitle.value;
     this.author  = bookAuthor.value;
     this.genre = bookGenre.value;
-    this.read = bookRead.checked;
+    this.checkRead = function() {
+      // if(bookRead.checked) {
+      //   return true;
+      // }
+      if(bookRead.checked) {
+        console.log('1');
+        return this.read = true;
+      }  else {
+        console.log('2');
+        return this.read = false;
+      }
+    };
   }
 
   function addBookToLibrary() {
@@ -98,10 +140,12 @@
     }
 
     let newBook = new Book();
+    newBook.checkRead();
     library.push(newBook);
     console.log(library);
     dialog.close();
     resetValues();
+    
     displayBook();
   }
 

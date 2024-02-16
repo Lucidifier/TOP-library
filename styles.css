@@ -38,6 +38,7 @@ body {
   --color-secondary: #FF9B50;
   --color-tertiary: #E25E3E;
   --color-four: #C63D2F;
+  --color-five: #5CA0FF;
 
 }
 
@@ -152,6 +153,11 @@ dialog > button {
   grid-template-rows: repeat(minmax(0,1fr));
   font-size: var(--font-medium);
   font-family:'Times New Roman', Times, serif;
+}
+
+.read-outline {
+  border-left: 2rem solid var(--color-five);
+
 }
 
 .book-rows {
