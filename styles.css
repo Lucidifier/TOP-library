@@ -27,14 +27,65 @@ img {
 body {
   width: 100%;
   height: 100vh;
-  background-color: green;
 }
+
+:root {
+  --font-big: 3rem;
+  --font-medium: 1.1rem;
+  --font-small: 0.8rem;
+
+  --color-primary: #FFBB5C;
+  --color-secondary: #FF9B50;
+  --color-tertiary: #E25E3E;
+  --color-four: #C63D2F;
+
+}
+
 
 .container {
   width: 100%;
   height: 100vh;
   display: grid;
   grid-template-rows: minmax(0,1fr) minmax(0,5fr) minmax(0,1fr);
+}
+
+div > header {
+  background-color: var(--color-secondary);
+  text-align: center;
+  color: var(--color-four);
+  font-size: var(--font-big);
+  font-weight: bold;
+}
+
+div > header > p {
+  line-height: 7rem;
+}
+
+div > header > p:nth-child(2) {
+  font-size: var(--font-medium);
+  line-height: 0rem;
+}
+
+div > main {
+  background-color: var(--color-primary);
+  padding-bottom: 2rem;
+}
+
+div > footer {
+  background-color: var(--color-secondary);
+  display: flex;
+  justify-content: center;
+}
+
+.open-dialog {
+  align-self: center; 
+  width: 7rem;
+  height: 7rem;
+  border-radius: 5rem;
+  font-size: var(--font-big);
+  color: var(--color-four);
+  background-color: var(--color-tertiary);
+  border: 0.3rem solid var(--color-four);
 }
 
 .entry-dialog[open] {
@@ -50,9 +101,38 @@ body {
 }
 
 .book {
-  height: 10rem;
-  width: 10rem;
-  border: 2px solid black;
+  height: 18rem;
+  width: 15rem;
+  border: 0.3rem solid var(--color-four);
+  border-left: 2rem solid var(--color-four);
+  color: var(--color-four);
+  border-radius: 2rem;
+  padding-left: 0.3rem;
+  margin-top: 2rem ;
+  margin-left: 4rem;
+  display: grid;
+  grid-template-rows: repeat(minmax(0,1fr));
+  font-size: 1.3rem;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.book-rows {
+  place-self: center;
+  text-align: center;
+  color: var(--color-four);
+  font-size: var(--font-medium);
+  font-weight: bold;
+}
+
+.book-remove-btn {
+  place-self: center;
+  text-align: center;
+  color: var(--color-four);
+  font-size: var(--font-medium);
+  font-weight: bold;
+  border: 0.2rem solid var(--color-four);
+  border-radius: 1rem;
+  background-color: var(--color-secondary);
 }
 
 .book-container {

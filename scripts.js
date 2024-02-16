@@ -30,7 +30,12 @@
       containerDiv.appendChild(lineAuthor);
       containerDiv.appendChild(lineGenre);
       containerDiv.appendChild(removeButton);
+
       containerDiv.classList.toggle('book');
+      lineTitle.classList.toggle('book-rows');
+      lineAuthor.classList.toggle('book-rows');
+      lineGenre.classList.toggle('book-rows');
+      removeButton.classList.toggle('book-remove-btn');
 
       function removeBookFromLibrary() {
         console.log(library);
