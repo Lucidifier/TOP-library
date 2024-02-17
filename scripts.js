@@ -1,5 +1,13 @@
 const library = [];
 
+//Reset values because dialog box remembers  old ones
+function resetValues() {
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    bookGenre.value = '';
+	bookRead.checked = false;
+}
+
 function displayBook() {
 
     //Clear container of  previous book divs
@@ -102,13 +110,7 @@ function Book() {
 
 function addBookToLibrary() {
 
-  	//Reset values because dialog box remembers  old ones
-  	function resetValues() {
-    	bookTitle.value = '';
-    	bookAuthor.value = '';
-    	bookGenre.value = '';
-    	bookRead.checked = false;
-  	}
+
 
   	let newBook = new Book();
   	newBook.checkRead();
@@ -126,6 +128,7 @@ openDialogBtn.addEventListener('click', () => {
 
 closeDialogBtn.addEventListener('click', () => {
   	dialog.close();
+    resetValues();
 });
 
 addBookBtn.addEventListener('click', addBookToLibrary);
