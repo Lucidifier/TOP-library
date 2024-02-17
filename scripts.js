@@ -1,39 +1,5 @@
 const library = [];
 
-const openDialogBtn = document.querySelector('.open-dialog');
-const closeDialogBtn = document.querySelector('.close-dialog');
-const addBookBtn = document.querySelector('.add-book');
-const dialog = document.querySelector('.entry-dialog');
-const bookContainer = document.querySelector('.book-container');
-let removeButton;
-
-//Input fields 
-const bookTitle = document.getElementById('title');
-const bookAuthor = document.getElementById('author');
-const bookGenre = document.getElementById('genre');
-const bookRead = document.getElementById('read');
-
-function Book() {
-    this.title = bookTitle.value;
-    this.author  = bookAuthor.value;
-    this.genre = bookGenre.value;
-    this.checkRead = function() {
-      if(bookRead.checked) {
-            return this.read = true;
-      }else {
-          return this.read = false;
-        }
-    };
-}
-
-//Reset values because dialog box remembers  old ones
-function resetValues() {
-    bookTitle.value = '';
-    bookAuthor.value = '';
-    bookGenre.value = '';
-    bookRead.checked = false;
-  }
-
 function displayBook() {
 
     //Clear container of  previous book divs
@@ -71,6 +37,7 @@ function displayBook() {
 
 
       	function removeBookFromLibrary() {
+        	console.log(library);
         	containerDiv.remove();
         	library.splice(containerDiv.dataset.order,1);
 
@@ -82,6 +49,7 @@ function displayBook() {
           		i++;
         	});
         }
+
 
       	function checkReadStatus() {
         	if(item.read === true) {
@@ -99,29 +67,65 @@ function displayBook() {
           	}
         };
 
+
       	checkReadStatus(); 
       	removeButton.addEventListener('click', removeBookFromLibrary);
       	containerDiv.addEventListener('click', changeReadStatus);
     });
 }
 
-function addBookToLibrary() {
-    resetValues()
-    let newBook = new Book();
-    newBook.checkRead();
-    library.push(newBook);
-    dialog.close();
-    resetValues();
-    displayBook();
+const openDialogBtn = document.querySelector('.open-dialog');
+const closeDialogBtn = document.querySelector('.close-dialog');
+const addBookBtn = document.querySelector('.add-book');
+const dialog = document.querySelector('.entry-dialog');
+const bookContainer = document.querySelector('.book-container');
+let removeButton;
+
+//Input fields 
+const bookTitle = document.getElementById('title');
+const bookAuthor = document.getElementById('author');
+const bookGenre = document.getElementById('genre');
+const bookRead = document.getElementById('read');
+
+function Book() {
+  	this.title = bookTitle.value;
+  	this.author  = bookAuthor.value;
+  	this.genre = bookGenre.value;
+  	this.checkRead = function() {
+    	if(bookRead.checked) {
+      		return this.read = true;
+    	}else {
+        	return this.read = false;
+      	}
+  	};
 }
 
+function addBookToLibrary() {
+
+  	//Reset values because dialog box remembers  old ones
+  	function resetValues() {
+    	bookTitle.value = '';
+    	bookAuthor.value = '';
+    	bookGenre.value = '';
+    	bookRead.checked = false;
+  	}
+
+  	let newBook = new Book();
+  	newBook.checkRead();
+  	library.push(newBook);
+  	dialog.close();
+  	resetValues();
+  	displayBook();
+  	}
+
+  
+
 openDialogBtn.addEventListener('click', () => {
-    dialog.showModal();
+  	dialog.showModal();
 });
 
 closeDialogBtn.addEventListener('click', () => {
-    dialog.close();
-  resetValues()
+  	dialog.close();
 });
 
 addBookBtn.addEventListener('click', addBookToLibrary);
