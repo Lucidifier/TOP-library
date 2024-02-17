@@ -1,5 +1,31 @@
 const library = [];
 
+const openDialogBtn = document.querySelector('.open-dialog');
+const closeDialogBtn = document.querySelector('.close-dialog');
+const addBookBtn = document.querySelector('.add-book');
+const dialog = document.querySelector('.entry-dialog');
+const bookContainer = document.querySelector('.book-container');
+let removeButton;
+
+//Input fields 
+const bookTitle = document.getElementById('title');
+const bookAuthor = document.getElementById('author');
+const bookGenre = document.getElementById('genre');
+const bookRead = document.getElementById('read');
+
+function Book() {
+    this.title = bookTitle.value;
+    this.author  = bookAuthor.value;
+    this.genre = bookGenre.value;
+    this.checkRead = function() {
+      if(bookRead.checked) {
+            return this.read = true;
+      }else {
+          return this.read = false;
+        }
+    };
+}
+
 //Reset values because dialog box remembers  old ones
 function resetValues() {
     bookTitle.value = '';
@@ -58,7 +84,6 @@ function displayBook() {
         	});
         }
 
-
       	function checkReadStatus() {
         	if(item.read === true) {
           	containerDiv.classList.toggle('read-outline');
@@ -75,42 +100,13 @@ function displayBook() {
           	}
         };
 
-
       	checkReadStatus(); 
       	removeButton.addEventListener('click', removeBookFromLibrary);
       	containerDiv.addEventListener('click', changeReadStatus);
     });
 }
 
-const openDialogBtn = document.querySelector('.open-dialog');
-const closeDialogBtn = document.querySelector('.close-dialog');
-const addBookBtn = document.querySelector('.add-book');
-const dialog = document.querySelector('.entry-dialog');
-const bookContainer = document.querySelector('.book-container');
-let removeButton;
-
-//Input fields 
-const bookTitle = document.getElementById('title');
-const bookAuthor = document.getElementById('author');
-const bookGenre = document.getElementById('genre');
-const bookRead = document.getElementById('read');
-
-function Book() {
-  	this.title = bookTitle.value;
-  	this.author  = bookAuthor.value;
-  	this.genre = bookGenre.value;
-  	this.checkRead = function() {
-    	if(bookRead.checked) {
-      		return this.read = true;
-    	}else {
-        	return this.read = false;
-      	}
-  	};
-}
-
 function addBookToLibrary() {
-
-
 
   	let newBook = new Book();
   	newBook.checkRead();
@@ -118,9 +114,7 @@ function addBookToLibrary() {
   	dialog.close();
   	resetValues();
   	displayBook();
-  	}
-
-  
+}
 
 openDialogBtn.addEventListener('click', () => {
   	dialog.showModal();
