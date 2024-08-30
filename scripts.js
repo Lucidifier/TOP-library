@@ -3,7 +3,7 @@ const library = [];
 const openDialogBtn = document.querySelector('.open-dialog');
 const closeDialogBtn = document.querySelector('.close-dialog');
 const addBookBtn = document.querySelector('.add-book');
-const dialog = document.querySelector('.entry-dialog');
+const form = document.querySelector('.entry-dialog');
 const bookContainer = document.querySelector('.book-container');
 let removeButton;
 
@@ -31,7 +31,7 @@ function resetValues() {
     bookTitle.value = '';
     bookAuthor.value = '';
     bookGenre.value = '';
-	bookRead.checked = false;
+	  bookRead.checked = false;
 }
 
 function displayBook() {
@@ -40,6 +40,7 @@ function displayBook() {
     while(bookContainer.firstChild) {
     bookContainer.removeChild(bookContainer.firstChild);
     };
+   
 
     //Loop through library arr  and create  divs for every object
     library.forEach(function(item, index) {
@@ -109,19 +110,21 @@ function displayBook() {
 function addBookToLibrary() {
 
   	let newBook = new Book();
+    form.classList.add('hide-element');
   	newBook.checkRead();
   	library.push(newBook);
-  	dialog.close();
   	resetValues();
   	displayBook();
 }
 
 openDialogBtn.addEventListener('click', () => {
-  	dialog.showModal();
+    bookContainer.append(form);
+  	form.classList.remove('hide-element');
+    console.log('openFormBtn');
 });
 
 closeDialogBtn.addEventListener('click', () => {
-  	dialog.close();
+    form.classList.add('hide-element');
     resetValues();
 });
 
