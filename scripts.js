@@ -1,3 +1,5 @@
+import validateForm from "./formValidation.js";
+
 const library = [];
 
 const openDialogBtn = document.querySelector('.open-dialog');
@@ -120,6 +122,7 @@ function addBookToLibrary() {
 openDialogBtn.addEventListener('click', () => {
     bookContainer.append(form);
   	form.classList.remove('hide-element');
+    validateForm();
     console.log('openFormBtn');
 });
 
@@ -129,3 +132,4 @@ closeDialogBtn.addEventListener('click', () => {
 });
 
 addBookBtn.addEventListener('click', addBookToLibrary);
+

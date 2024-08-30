@@ -17,15 +17,16 @@
       <form class="entry-dialog hide-element" novalidate>
         <section>
           <label for="title">Title</label>
-          <input type="text" name="title" id="title">
+          <input type="text" name="title" id="title" pattern="[a-zA-Z0-9]+" minlength="1" maxlength="30" required>
+          <span class="error error_inactive"></span>
         </section>
         <section>
           <label for="author">Author</label>
-          <input type="text" name="author" id="author">
+          <input type="text" name="author" id="author" pattern="[a-zA-Z0-9]+" minlength="1" maxlength="30" required>
         </section>
         <section>
           <label for="genre">Genre</label>
-          <input type="text" name="genre" id="genre">
+          <input type="text" name="genre" id="genre" pattern="[a-zA-Z0-9]+" minlength="1" maxlength="30" required>
         </section>
         <section>
           <label for="read">READ</label>
@@ -40,6 +41,7 @@
     </footer>
   </div>
 
-  <script src="scripts.js"></script>
+  <script type="module" src="scripts.js"></script>
+  <script type="module" src="formValidation.js"></script>
 </body>
 </html>
