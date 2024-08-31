@@ -125,7 +125,7 @@ section > input:focus {
   padding-left: 1rem;
 }
 
-section > input:invalid {
+section > input.touched:invalid {
   border: 0.4rem solid #900;;
 }
 

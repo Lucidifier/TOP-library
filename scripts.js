@@ -1,4 +1,4 @@
-import validateForm from "./formValidation.js";
+import {validateForm, addButtonValidation} from "./formValidation.js";
 
 const library = [];
 
@@ -110,13 +110,16 @@ function displayBook() {
 }
 
 function addBookToLibrary() {
-
+  let validatedForm = addButtonValidation();
+  console.log(validatedForm);
+  if(validatedForm) {
   	let newBook = new Book();
     form.classList.add('hide-element');
   	newBook.checkRead();
   	library.push(newBook);
   	resetValues();
   	displayBook();
+  }
 }
 
 openDialogBtn.addEventListener('click', () => {

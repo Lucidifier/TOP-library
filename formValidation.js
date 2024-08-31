@@ -41,4 +41,27 @@ function validateForm() {
     };
   })
 }
-export default  validateForm;
+
+function addButtonValidation() {
+  console.log('addButtonValidation');
+  const form = document.querySelector('.entry-dialog');
+  const titleInput = document.getElementById('title');
+  const authorInput = document.getElementById('author');
+  const genreInput = document.getElementById('genre');
+  const addButtonError = document.querySelector('form > section:nth-child(4) > span');
+  
+  if(titleInput.checkValidity()) {
+    console.log(1);
+  } else {console.log(2)};
+
+  if(!titleInput.validity.tooShort && !authorInput.validity.tooShort && !genreInput.validity.tooShort) {
+    addButtonError.classList.replace('error_active', 'error_inactive');
+    return true;
+  } else {
+    addButtonError.textContent = 'Please fill in all fields using only letters and numbers';
+    addButtonError.classList.replace('error_inactive', 'error_active');
+    return false;
+  }
+}
+
+export { validateForm, addButtonValidation };
