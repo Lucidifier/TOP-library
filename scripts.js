@@ -111,7 +111,7 @@ function displayBook() {
 
 function addBookToLibrary() {
   let validatedForm = addButtonValidation();
-  console.log(validatedForm);
+  console.log('validatedForm:',validatedForm);
   if(validatedForm) {
   	let newBook = new Book();
     form.classList.add('hide-element');
@@ -119,7 +119,14 @@ function addBookToLibrary() {
   	library.push(newBook);
   	resetValues();
   	displayBook();
-  }
+  } else {
+    resetValues();
+    displayBook();
+    bookContainer.append(form);
+  	form.classList.remove('hide-element');
+    validateForm();
+    console.log('openFormBtn');
+    console.log('error');}
 }
 
 openDialogBtn.addEventListener('click', () => {
@@ -135,4 +142,8 @@ closeDialogBtn.addEventListener('click', () => {
 });
 
 addBookBtn.addEventListener('click', addBookToLibrary);
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+})
 

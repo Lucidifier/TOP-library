@@ -8,6 +8,7 @@ function validateForm() {
   const titleError = document.querySelector('#title + span');
   const authorError = document.querySelector('#author + span');
   const genreError = document.querySelector('#genre + span');
+  const bookInputs = form.querySelectorAll('input[required]');
 
   console.log(titleInput);
 
@@ -50,17 +51,32 @@ function addButtonValidation() {
   const genreInput = document.getElementById('genre');
   const addButtonError = document.querySelector('form > section:nth-child(4) > span');
   
-  if(titleInput.checkValidity()) {
-    console.log(1);
-  } else {console.log(2)};
-
-  if(!titleInput.validity.tooShort && !authorInput.validity.tooShort && !genreInput.validity.tooShort) {
-    addButtonError.classList.replace('error_active', 'error_inactive');
-    return true;
-  } else {
+  if(titleInput.value === '') {
     addButtonError.textContent = 'Please fill in all fields using only letters and numbers';
-    addButtonError.classList.replace('error_inactive', 'error_active');
+    titleInput.classList.add('touched');
+    addButtonError.classList.remove('error_inactive');
+    addButtonError.classList.add('error_active');
+    console.log('false');
     return false;
+  } else if(authorInput.value === '') {
+    addButtonError.textContent = 'Please fill in all fields using only letters and numbers';
+    authorInput.classList.add('touched');
+    addButtonError.classList.remove('error_inactive');
+    addButtonError.classList.add('error_active');
+    console.log('false');
+    return false;
+  } else if(genreInput.value === '') {
+    addButtonError.textContent = 'Please fill in all fields using only letters and numbers';
+    genreInput.classList.add('touched');
+    addButtonError.classList.remove('error_inactive');
+    addButtonError.classList.add('error_active');
+    console.log('false');
+    return false;
+  } else {
+    addButtonError.classList.remove('error_active');
+    addButtonError.classList.add('error_inactive');
+    console.log('true');
+    return true;
   }
 }
 
