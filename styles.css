@@ -134,13 +134,18 @@ section > input[type='checkbox']:focus{
   outline: none;
 }
 
-form > button {
+form > button, form > section > button {
   background-color: var(--color-primary);
   border: 0.4rem solid var(--color-four);
   border-radius: 1rem;
   font-size: var(--font-medium);
   color: var(--color-four);
   font-weight: bolder;
+}
+
+form > section:nth-child(5) {
+  display: grid;
+  grid-template-rows: repeat(minmax(0,1fr));
 }
 
 .entry-dialog > section:nth-child(-n+3) {

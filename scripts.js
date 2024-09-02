@@ -120,7 +120,7 @@ function addBookToLibrary() {
   	resetValues();
   	displayBook();
   } else {
-    resetValues();
+    // resetValues();
     displayBook();
     bookContainer.append(form);
   	form.classList.remove('hide-element');

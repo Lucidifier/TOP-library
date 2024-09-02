@@ -49,25 +49,10 @@ function addButtonValidation() {
   const titleInput = document.getElementById('title');
   const authorInput = document.getElementById('author');
   const genreInput = document.getElementById('genre');
-  const addButtonError = document.querySelector('form > section:nth-child(4) > span');
+  const addButtonError = document.querySelector('form > section:nth-child(5) > span');
   
-  if(titleInput.value === '') {
+  if(titleInput.value === '' || authorInput.value === '' || genreInput.value === '') {
     addButtonError.textContent = 'Please fill in all fields using only letters and numbers';
-    titleInput.classList.add('touched');
-    addButtonError.classList.remove('error_inactive');
-    addButtonError.classList.add('error_active');
-    console.log('false');
-    return false;
-  } else if(authorInput.value === '') {
-    addButtonError.textContent = 'Please fill in all fields using only letters and numbers';
-    authorInput.classList.add('touched');
-    addButtonError.classList.remove('error_inactive');
-    addButtonError.classList.add('error_active');
-    console.log('false');
-    return false;
-  } else if(genreInput.value === '') {
-    addButtonError.textContent = 'Please fill in all fields using only letters and numbers';
-    genreInput.classList.add('touched');
     addButtonError.classList.remove('error_inactive');
     addButtonError.classList.add('error_active');
     console.log('false');
